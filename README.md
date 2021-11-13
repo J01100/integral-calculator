@@ -1,2 +1,5 @@
 # differential_integral_calculator
-Project for Advanced Calculus
+to be added:
+
+menu; differential, definite integral, indefinite integral
+
