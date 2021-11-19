@@ -1,6 +1,6 @@
 import matplotlib
 import matplotlib.pyplot as plt
-import sympy as sp 
+import sympy as sp
 from sympy import Pow, sin, diff
 import tkinter as tk
 from IPython.display import display, Math
@@ -31,7 +31,7 @@ def graph(event=None):
         print(len(tmptext))
     else:
         fs = 16
-    ax.text(0.05, .4, tmptext, fontsize=fs)  
+    ax.text(0.05, .4, tmptext, fontsize=fs)
     canvas.draw()
 
 root = tk.Tk()
@@ -60,7 +60,7 @@ canvas._tkcanvas.pack(side="top", fill="both", expand=True)
 ax.get_xaxis().set_visible(False)
 ax.get_yaxis().set_visible(False)
 
-try: 
+try:
     graph()
 except:
     pass
