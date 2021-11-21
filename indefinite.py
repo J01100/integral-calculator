@@ -17,5 +17,5 @@ class Indefinite(tk.Frame):
         label = tk.Label(self, text="This is page 1", font=controller.title_font)
         label.pack(side="top", fill="x", pady=10)
         button = tk.Button(self, text="Go to the start page",
-                           command=lambda: controller.show_frame("StartPage"))
+                           command=lambda: controller.show_frame("Menu"))
         button.pack()

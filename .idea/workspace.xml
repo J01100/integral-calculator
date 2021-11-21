@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="060c929d-5ad3-466a-918f-1dea6c074c29" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/definite.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/indefinite.bak" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/indefinite.py" beforeDir="false" afterPath="$PROJECT_DIR$/indefinite.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
