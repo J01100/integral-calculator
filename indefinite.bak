@@ -1,4 +1,11 @@
-
+import matplotlib
+import matplotlib.pyplot as plt
+import sympy as sp
+from sympy import Pow, sin, diff
+import tkinter as tk
+from IPython.display import display, Math
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+matplotlib.use('TkAgg')
 
 # DEFINITE, INDEFINITE, DIFFERNTIAL
 # for page frames
@@ -8,19 +15,18 @@
 def test(expr):
     return sp.latex(sp.integrate(expr))
 
-
 def graph(event=None):
     i = entry.get()
     tmptext = test(i)
 
     # tmptext = "$"+ sp.latex(sp.sympify(i)) + "\ dx" + "=" + "$"
     # tmptext = "$"+ tmptext + "$"
-    tmptext = "$\int$" + "$" + sp.latex(sp.sympify(i)) + "\ dx" + "=" + tmptext + "+c" + "$"
+    tmptext = "$\int$" + "$" + sp.latex(sp.sympify(i)) + "\ dx" + "=" +tmptext+ "+c" + "$"
 
     ax.clear()
-    if 120 <= len(tmptext) <= 122:
+    if len(tmptext) >= 120 and len(tmptext) <= 122:
         fs = 12
-    elif 122 < len(tmptext) <= 140:
+    elif len(tmptext) > 122 and len(tmptext) <= 140:
         fs = 11
         print(len(tmptext))
     else:
@@ -28,13 +34,13 @@ def graph(event=None):
     ax.text(0.05, .4, tmptext, fontsize=fs)
     canvas.draw()
 
-
 root = tk.Tk()
 root.title("Indefinite Integrals")
 root.resizable(False, False)
 
 mainframe = tk.Frame(root)
 mainframe.pack()
+
 
 entry = tk.Entry(mainframe, width=30)
 entry.pack()
@@ -56,8 +62,8 @@ ax.get_yaxis().set_visible(False)
 
 try:
     graph()
-except TypeError or Exception:
+except:
     pass
 
-root.bind("<Return>", graph)
+# root.bind("<Return>", graph)
 root.mainloop()

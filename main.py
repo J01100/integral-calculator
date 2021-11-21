@@ -4,7 +4,7 @@ from definite import Definite
 from indefinite import Indefinite
 
 
-class Main(tk.Tk):
+class SampleApp(tk.Tk):
 
     def __init__(self, *args, **kwargs):
         tk.Tk.__init__(self, *args, **kwargs)
@@ -20,7 +20,7 @@ class Main(tk.Tk):
         container.grid_columnconfigure(0, weight=1)
 
         self.frames = {}
-        for F in (Menu, Indefinite, Definite):
+        for F in (StartPage, Indefinite, Definite):
             page_name = F.__name__
             frame = F(parent=container, controller=self)
             self.frames[page_name] = frame
@@ -30,7 +30,7 @@ class Main(tk.Tk):
             # will be the one that is visible.
             frame.grid(row=0, column=0, sticky="nsew")
 
-        self.show_frame("Menu")
+        self.show_frame("StartPage")
 
     def show_frame(self, page_name):
         '''Show a frame for the given page name'''
@@ -38,22 +38,22 @@ class Main(tk.Tk):
         frame.tkraise()
 
 
-class Menu(tk.Frame):
+class StartPage(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
         label = tk.Label(self, text="This is the start page", font=controller.title_font)
-        label.pack(side="top", fill="x", pady=9)
+        label.pack(side="top", fill="x", pady=10)
 
-        button0 = tk.Button(self, text="Go to Page One",
-                            command=lambda: controller.show_frame("Indefinite"))
-        button1 = tk.Button(self, text="Go to Page Two",
-                            command=lambda: controller.show_frame("Definite"))
-        button0.pack()
+        button1 = tk.Button(self, text="Go to Page One",
+                            command=lambda: controller.show_frame("PageOne"))
+        button2 = tk.Button(self, text="Go to Page Two",
+                            command=lambda: controller.show_frame("PageTwo"))
         button1.pack()
+        button2.pack()
 
 
 if __name__ == "__main__":
-    app = Main()
+    app = SampleApp()
     app.mainloop()
