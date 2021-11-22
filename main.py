@@ -24,7 +24,7 @@ class Main(tk.Tk):
         container = tk.Frame(self)
         container.grid(row=1, column=1)
         self.frames = {}
-        for F in (Menu, Indefinite, Definite):
+        for F in (Menu, Indefinite, Definite, Differential):
             page_name = F.__name__
             frame = F(parent=container, controller=self)
             self.frames[page_name] = frame
@@ -53,8 +53,131 @@ class Menu(tk.Frame):
                             command=lambda: controller.show_frame("Indefinite"))
         button2 = tk.Button(self, text="Definite Integrals",
                             command=lambda: controller.show_frame("Definite"))
+        button3 = tk.Button(self, text="Differentials",
+                            command=lambda: controller.show_frame("Differential"))
         button1.pack()
         button2.pack()
+        button3.pack()
+
+
+class Differential(tk.Frame):
+
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
+        self.controller = controller
+        label = tk.Label(self, text="Derivatives", font=controller.title_font)
+        label.pack(side="top", fill="x", pady=10)
+        back_button = tk.Button(self, text="Back",
+                                command=lambda: controller.show_frame("Menu"))
+
+        def derive(expr):
+            return sp.latex(sp.diff(expr))
+
+        def graph(event=None):
+            i = entry.get()
+            tmptext = derive(i)
+
+            tmptext = "$ \\frac{dy}{dx}" + sp.latex(sp.sympify(i)) + "=" + tmptext + "$"
+
+            ax.clear()
+            if 120 <= len(tmptext) <= 122:
+                fs = 12
+            elif 122 < len(tmptext) <= 140:
+                fs = 11
+                print(len(tmptext))
+            else:
+                fs = 16
+
+            ax.text(0.05, .4, tmptext, fontsize=fs)
+            canvas.draw()
+
+            symplot(sp.diff(i))
+            # symplot(i)
+
+        entry = tk.Entry(self, width=70)
+        entry.pack()
+
+        tk.Button(self, text="Differentiate", command=graph).pack()
+
+        label = tk.Label(self)
+        label.pack()
+
+        fig = matplotlib.figure.Figure(figsize=(10, 1), dpi=80)
+        ax = fig.add_subplot(111)
+
+        canvas = FigureCanvasTkAgg(fig, master=label)
+        canvas.get_tk_widget().pack(side="top", fill="both", expand=True)
+        canvas._tkcanvas.pack(side="top", fill="both", expand=True)
+
+        ax.get_xaxis().set_visible(False)
+        ax.get_yaxis().set_visible(False)
+
+        back_button.pack()
+
+        try:
+            graph()
+        except:
+            pass
+
+
+class Indefinite(tk.Frame):
+
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
+        self.controller = controller
+        label = tk.Label(self, text="Indefinite Integrals", font=controller.title_font)
+        label.pack(side="top", fill="x", pady=10)
+        back_button = tk.Button(self, text="Back",
+                                command=lambda: controller.show_frame("Menu"))
+
+        def integrate(expr):
+            return sp.latex(sp.integrate(expr))
+
+        def graph(event=None):
+            i = entry.get()
+            tmptext = integrate(i)
+
+            tmptext = "$\int$" + "$" + sp.latex(sp.sympify(i)) + "\ dx" + "=" + tmptext + "+c" + "$"
+
+            ax.clear()
+            if 120 <= len(tmptext) <= 122:
+                fs = 12
+            elif 122 < len(tmptext) <= 140:
+                fs = 11
+                print(len(tmptext))
+            else:
+                fs = 16
+
+            ax.text(0.05, .4, tmptext, fontsize=fs)
+            canvas.draw()
+
+            symplot(sp.integrate(i))
+            # symplot(i)
+
+        entry = tk.Entry(self, width=70)
+        entry.pack()
+
+        tk.Button(self, text="Integrate", command=graph).pack()
+
+        label = tk.Label(self)
+        label.pack()
+
+        fig = matplotlib.figure.Figure(figsize=(10, 1), dpi=80)
+        ax = fig.add_subplot(111)
+
+        canvas = FigureCanvasTkAgg(fig, master=label)
+        canvas.get_tk_widget().pack(side="top", fill="both", expand=True)
+        canvas._tkcanvas.pack(side="top", fill="both", expand=True)
+
+        ax.get_xaxis().set_visible(False)
+        ax.get_yaxis().set_visible(False)
+
+        back_button.pack()
+
+        try:
+            graph()
+        except:
+            pass
 
 
 class Indefinite(tk.Frame):
