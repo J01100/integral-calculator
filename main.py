@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import sympy as sp
 from sympy import Pow, sin, diff
 from IPython.display import display, Math
+import sympy.plotting.plot as symplot
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 matplotlib.use('TkAgg')
@@ -61,7 +62,7 @@ class Indefinite(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        label = tk.Label(self, text="Indefinite Integration", font=controller.title_font)
+        label = tk.Label(self, text="Indefinite Integrals", font=controller.title_font)
         label.pack(side="top", fill="x", pady=10)
         back_button = tk.Button(self, text="Back",
                                 command=lambda: controller.show_frame("Menu"))
@@ -86,6 +87,9 @@ class Indefinite(tk.Frame):
 
             ax.text(0.05, .4, tmptext, fontsize=fs)
             canvas.draw()
+
+            symplot(sp.integrate(i))
+            # symplot(i)
 
         entry = tk.Entry(self, width=70)
         entry.pack()
@@ -113,12 +117,13 @@ class Indefinite(tk.Frame):
             pass
 
 
+
 class Definite(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        label = tk.Label(self, text="Definite Integration", font=controller.title_font)
+        label = tk.Label(self, text="Definite Integrals", font=controller.title_font)
         label.grid(row=1, column=1, columnspan=6)
         back_button = tk.Button(self, text="Back",
                                 command=lambda: controller.show_frame("Menu"))
@@ -146,6 +151,10 @@ class Definite(tk.Frame):
 
             ax.text(0.05, .4, tmptext, fontsize=fs)
             canvas.draw()
+
+            x = sp.symbols('x')
+            symplot(i, (x, int(l), int(u)))
+
 
         upper = tk.StringVar()
         tk.Entry(self, textvariable=upper, width=3).grid(row=2, column=2, sticky='w')
