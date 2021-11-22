@@ -180,66 +180,6 @@ class Indefinite(tk.Frame):
             pass
 
 
-class Indefinite(tk.Frame):
-
-    def __init__(self, parent, controller):
-        tk.Frame.__init__(self, parent)
-        self.controller = controller
-        label = tk.Label(self, text="Indefinite Integrals", font=controller.title_font)
-        label.pack(side="top", fill="x", pady=10)
-        back_button = tk.Button(self, text="Back",
-                                command=lambda: controller.show_frame("Menu"))
-
-        def integrate(expr):
-            return sp.latex(sp.integrate(expr))
-
-        def graph(event=None):
-            i = entry.get()
-            tmptext = integrate(i)
-
-            tmptext = "$\int$" + "$" + sp.latex(sp.sympify(i)) + "\ dx" + "=" + tmptext + "+c" + "$"
-
-            ax.clear()
-            if 120 <= len(tmptext) <= 122:
-                fs = 12
-            elif 122 < len(tmptext) <= 140:
-                fs = 11
-                print(len(tmptext))
-            else:
-                fs = 16
-
-            ax.text(0.05, .4, tmptext, fontsize=fs)
-            canvas.draw()
-
-            symplot(sp.integrate(i))
-            # symplot(i)
-
-        entry = tk.Entry(self, width=70)
-        entry.pack()
-
-        tk.Button(self, text="Integrate", command=graph).pack()
-
-        label = tk.Label(self)
-        label.pack()
-
-        fig = matplotlib.figure.Figure(figsize=(10, 1), dpi=80)
-        ax = fig.add_subplot(111)
-
-        canvas = FigureCanvasTkAgg(fig, master=label)
-        canvas.get_tk_widget().pack(side="top", fill="both", expand=True)
-        canvas._tkcanvas.pack(side="top", fill="both", expand=True)
-
-        ax.get_xaxis().set_visible(False)
-        ax.get_yaxis().set_visible(False)
-
-        back_button.pack()
-
-        try:
-            graph()
-        except:
-            pass
-
-
 
 class Definite(tk.Frame):
 
