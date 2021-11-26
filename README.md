@@ -2,4 +2,4 @@
 
 ##### known issues:
 * bad menu gui
-* intervals for indefinite integral can be weird
+* intervals for indefinite integrals and derivatives can be weird, hence, charts can be weird. (this is due to symplots automatic interval assignment)
