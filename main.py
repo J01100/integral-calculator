@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import font as tkfont
-# import matplotlib
-import matplotlib.pyplot as plt
+import matplotlib
+# import matplotlib.pyplot as plt
 import sympy as sp
 # from sympy import Pow, sin, diff
 # from IPython.display import display, Math
