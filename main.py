@@ -1,10 +1,10 @@
 import tkinter as tk
 from tkinter import font as tkfont
-import matplotlib
+# import matplotlib
 import matplotlib.pyplot as plt
 import sympy as sp
-from sympy import Pow, sin, diff
-from IPython.display import display, Math
+# from sympy import Pow, sin, diff
+# from IPython.display import display, Math
 import sympy.plotting.plot as symplot
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
