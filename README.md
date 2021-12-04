@@ -2,8 +2,11 @@
 
 #### MENU
 ![menu](https://i.ibb.co/J2c62pd/1.png)
+#### Indefinite Integrals
 ![indefinite](https://i.ibb.co/RYfyMxp/calc.png)
+#### Definite Integrals
 ![definite](https://i.ibb.co/VMj8Bfy/2.png)
+#### Derivatives
 ![derivative](https://i.ibb.co/fMLdkym/3.png)
 
 ##### known issues:
