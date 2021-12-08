@@ -9,7 +9,7 @@ A desktop application that returns the anti-derivative [and/or derivative] in La
 4. Run from the terminal `python/python3 main.py` or use your IDE.
 
 ## Features
-* Utilizes Sympy for symbolic values and Numpy for numeric calculations.
+* Utilizes Sympy for symbolic calculations.
 * Output is displayed in LaTex by using Tkinter's canvas and Matplotlib.
 * Graphing of functions by using Symplot.
 * Derivatives as an added bonus.
