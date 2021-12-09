@@ -4,7 +4,7 @@ A desktop application that returns the anti-derivative [and/or derivative] in La
 
 ## How to install and run
 1. Install Python 3.6+ from the official website.
-2. Install the dependencies: Sumpy, Tkinter, and Matplotlib by running `pip/pip3 install <dependency_name>` from the terminal.
+2. Install the dependencies: Sympy, Tkinter, and Matplotlib by running `pip/pip3 install <dependency_name>` from the terminal.
 3. Download/clone the repository then unzip the files.
 4. Find the folder containing main.py.
 5. Run from the terminal `python/python3 main.py` or use your IDE.
