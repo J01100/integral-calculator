@@ -18,9 +18,7 @@ class Main(tk.Tk):
 
         self.title_font = tkfont.Font(family='Arial', size=14, weight="bold")
 
-        # the container is where we'll stack a bunch of frames
-        # on top of each other, then the one we want visible
-        # will be raised above the others
+        # the container is for frame stacking, tkraise to show frame.
         container = tk.Frame(self)
         container.grid(row=1, column=1)
         self.frames = {}
@@ -28,16 +26,13 @@ class Main(tk.Tk):
             page_name = F.__name__
             frame = F(parent=container, controller=self)
             self.frames[page_name] = frame
-
-            # put all of the pages in the same location;
-            # the one on the top of the stacking order
-            # will be the one that is visible.
+            # all frames in the exact same spot
             frame.grid(row=0, column=0, sticky="nsew")
 
         self.show_frame("Menu")
 
     def show_frame(self, page_name):
-        # Show a frame for the given page name
+        # show frame for the given page name
         frame = self.frames[page_name]
         frame.tkraise()
 
